@@ -1,0 +1,16 @@
+export enum ResourceEnum {
+  All = 'all',
+  Dashboard = 'Dashboard',
+  AnnualInfo = 'Annual Info',
+  Association = 'Association',
+  AssociationBeneficiaries = 'Association Beneficiaries',
+  Commodity = 'Commodity',
+  CommodityProduce = 'Commodity Produce',
+  Farm = 'Farm',
+  FarmProduce = 'Farm Produce',
+  Household = 'Household',
+  HouseholdBeneficiaries = 'Household Beneficiaries',
+  ProgramBeneficiaries = 'Program Beneficiaries',
+  Program = 'Program',
+  User = 'User',
+}
