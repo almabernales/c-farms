@@ -1,0 +1,87 @@
+query HouseholdOptions(
+  $where: HouseholdBoolExp
+  $orderBy: [HouseholdOrderBy!]
+  $offset: Int
+  $limit: Int
+) {
+  list: household(
+    where: $where
+    orderBy: $orderBy
+    offset: $offset
+    limit: $limit
+  ) {
+    id
+    firstName
+    lastName
+  }
+}
+
+query FarmList(
+  $where: FarmBoolExp
+  $orderBy: [FarmOrderBy!]
+  $offset: Int
+  $limit: Int
+) {
+  list: farm(where: $where, orderBy: $orderBy, offset: $offset, limit: $limit) {
+    id
+    location
+    name
+    barangay
+    household {
+      id
+      firstName
+      lastName
+    }
+    sizeInHaTotal
+    ownerName
+    ownershipType
+  }
+  meta: farmAggregate(where: $where) {
+    aggregate {
+      count
+    }
+  }
+}
+
+query FarmDetails($id: uuid!) {
+  details: farmByPk(id: $id) {
+    id
+    ownerName
+    ownershipDocument
+    ownershipType
+    name
+    barangay
+    municipality
+    farmType
+    sizeInHaTotal
+    isAgrarianReformBeneficiary
+    withinAncestralDomain
+    location
+    householdId
+  }
+}
+
+query FarmViewList(
+  $where: FarmViewBoolExp
+  $orderBy: [FarmViewOrderBy!]
+  $offset: Int
+  $limit: Int
+) { list: farmView(where: $where, orderBy: $orderBy, offset: $offset, limit: $limit) {
+    id
+    name
+    barangay
+    firstName
+    lastName
+    sizeInHaTotal
+    ownerName
+    ownershipType
+    createdAt
+    location
+    householdId
+  }
+  meta: farmViewAggregate(where: $where) {
+    aggregate {
+      count
+    }
+  }
+}

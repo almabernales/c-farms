@@ -1,0 +1,102 @@
+query HouseholdViewList(
+  $where: HouseholdViewBoolExp
+  $orderBy: [HouseholdViewOrderBy!]
+  $offset: Int
+  $limit: Int
+) {
+  list: householdView(
+    where: $where
+    orderBy: $orderBy
+    offset: $offset
+    limit: $limit
+  ) {
+    id
+    name
+    firstName
+    lastName
+    middleName
+    mainLivelihood
+    referenceNo
+    barangay
+    is4psBeneficiary
+    ipMembership
+    maleCount
+    femaleCount
+  }
+  meta: householdViewAggregate(where: $where) {
+    aggregate {
+      count
+    }
+  }
+}
+
+query HouseholdList(
+  $where: HouseholdBoolExp
+  $orderBy: [HouseholdOrderBy!]
+  $offset: Int
+  $limit: Int
+) {
+  list: household(
+    where: $where
+    orderBy: $orderBy
+    offset: $offset
+    limit: $limit
+  ) {
+    id
+    lastName
+    firstName
+    middleName
+    referenceNo
+    barangay
+    is4psBeneficiary
+    ipMembership
+    maleCount
+    femaleCount
+  }
+  meta: householdAggregate(where: $where) {
+    aggregate {
+      count
+    }
+  }
+}
+
+query HouseholdDetails($id: uuid!) {
+  details: householdByPk(id: $id) {
+    ...HouseholdFragment
+  }
+}
+
+fragment HouseholdFragment on Household {
+  id
+  firstName
+  lastName
+  middleName
+  extensionName
+  houseLotBldgNo
+  referenceNo
+  streetSitioSubdv
+  barangay
+  municipality
+  province
+  region
+  contactNumber
+  sex
+  civilStatus
+  nameOfSpouse
+  mothersMaidenName
+  religion
+  dateOfBirth
+  placeOfBirth
+  nameOfHouseholdHead
+  relationshipToHouseholdHead
+  maleCount
+  femaleCount
+  governmentIdType
+  governmentIdNo
+  personWithDisability
+  is4psBeneficiary
+  isHouseholdHead
+  ipMembership
+  emergencyContactName
+  emergencyContactNumber
+}

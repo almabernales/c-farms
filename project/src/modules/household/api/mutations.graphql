@@ -1,0 +1,14 @@
+mutation CreateHousehold($object: HouseholdInsertInput!) {
+  data: insertHouseholdOne(object: $object) {
+    id
+  }
+}
+
+mutation UpdateHousehold(
+  $object: HouseholdSetInput
+  $id: HouseholdPkColumnsInput!
+) {
+  data: updateHouseholdByPk(_set: $object, pk_columns: $id) {
+    id
+  }
+}

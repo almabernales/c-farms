@@ -1,0 +1,17 @@
+mutation CreateFarm($object: FarmInsertInput!) {
+  data: insertFarmOne(object: $object) {
+    id
+  }
+}
+
+mutation UpdateFarm($object: FarmSetInput, $id: FarmPkColumnsInput!) {
+  data: updateFarmByPk(_set: $object, pk_columns: $id) {
+    id
+  }
+}
+
+mutation DeleteFarm($id: uuid!) {
+  data: deleteFarmByPk(id: $id) {
+    id
+  }
+}
