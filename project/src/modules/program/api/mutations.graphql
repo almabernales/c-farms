@@ -1,0 +1,53 @@
+mutation CreateProgram($object: ProgramInsertInput!) {
+  data: insertProgramOne(object: $object) {
+    id
+  }
+}
+
+mutation UpdateProgram($object: ProgramSetInput, $id: ProgramPkColumnsInput!) {
+  data: updateProgramByPk(_set: $object, pk_columns: $id) {
+    id
+  }
+}
+
+mutation DeleteHouseholdProgram($ids: [uuid!]!) {
+  deleteHouseholdToProgram(where: { id: { _in: $ids } }) {
+    affected_rows
+    returning {
+      id
+    }
+  }
+}
+
+mutation CreateHouseholdProgram($objects: [HouseholdToProgramInsertInput!]!) {
+  insertHouseholdToProgram(objects: $objects) {
+    returning {
+      id
+    }
+    affected_rows
+  }
+}
+
+mutation DeleteAssociationProgram($ids: [uuid!]!) {
+  deleteAssociationToProgram(where: { id: { _in: $ids } }) {
+    affected_rows
+    returning {
+      id
+    }
+  }
+}
+
+mutation CreateAssociationProgram($objects: [AssociationToProgramInsertInput!]!) {
+  insertAssociationToProgram(objects: $objects) {
+    returning {
+      id
+    }
+    affected_rows
+  }
+}
+
+mutation DeleteProgram($id: uuid!) {
+  data: deleteProgramByPk(id: $id) {
+    id
+  }
+}
