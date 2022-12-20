@@ -1,0 +1,33 @@
+query CommodityList(
+  $where: CommodityBoolExp
+  $orderBy: [CommodityOrderBy!]
+  $offset: Int
+  $limit: Int
+) {
+  list: commodity(
+    where: $where
+    orderBy: $orderBy
+    offset: $offset
+    limit: $limit
+  ) {
+    id
+    name
+    commodityType
+    unit
+  }
+  meta: commodityAggregate(where: $where) {
+    aggregate {
+      count
+    }
+  }
+}
+
+query CommodityDetails($id: uuid!) {
+  details: commodityByPk(id: $id) {
+    id
+    name
+    commodityType
+    unit
+    conversionFactor
+  }
+}

@@ -1,0 +1,17 @@
+mutation CreateAssociation($object: AssociationInsertInput!) {
+  data: insertAssociationOne(object: $object) {
+    id
+  }
+}
+
+mutation UpdateAssociation($object: AssociationSetInput, $id: AssociationPkColumnsInput!) {
+  data: updateAssociationByPk(_set: $object, pk_columns: $id) {
+    id
+  }
+}
+
+mutation DeleteAssociation($id: uuid!) {
+  data: deleteAssociationByPk(id: $id){
+    id
+  }
+}

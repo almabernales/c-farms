@@ -1,0 +1,20 @@
+mutation CreateAnnualInfo($object: AnnualInfoInsertInput!) {
+  data: insertAnnualInfoOne(object: $object) {
+    id
+  }
+}
+
+mutation UpdateAnnualInfo(
+  $object: AnnualInfoSetInput
+  $id: AnnualInfoPkColumnsInput!
+) {
+  data: updateAnnualInfoByPk(_set: $object, pk_columns: $id) {
+    id
+  }
+}
+
+mutation DeleteAnnualInfo($id: uuid!) {
+  data: deleteAnnualInfoByPk(id: $id) {
+    id
+  }
+}

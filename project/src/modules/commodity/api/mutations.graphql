@@ -1,0 +1,20 @@
+mutation CreateCommodity($object: CommodityInsertInput!) {
+  data: insertCommodityOne(object: $object) {
+    id
+  }
+}
+
+mutation UpdateCommodity(
+  $object: CommoditySetInput
+  $id: CommodityPkColumnsInput!
+) {
+  data: updateCommodityByPk(_set: $object, pk_columns: $id) {
+    id
+  }
+}
+
+mutation DeleteCommodity($id: uuid!) {
+  data: deleteCommodityByPk(id: $id){
+    id
+  }
+}
